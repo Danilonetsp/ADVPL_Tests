@@ -12,25 +12,15 @@ cAsterisco := "*"
 cQuant := PegaDado("Informe a quantidade de asteriscos:")
 
 For nContL := 1 to Val(cQuant) Step 1
-
-ConOut(cAsterisco)
-cAsterisco := cAsterisco + "*"
-
+    ConOut(cAsterisco)
+    cAsterisco := cAsterisco + "*"
 Next
 
-cAsterisco := ""
-
-
-For nContL := Val(cQuant) to nContL2 Step -1
-
-cAsterisco := cAsterisco + "A"
-ConOut(cAsterisco)
-
+For nContL := Val(cQuant)-1 to nContL2 Step -1
+    ConOut(Replicate ("*",nContL))
 Next
 
-
-
-Alert("Olhe o console!")
+Alert("Olhe o console!!!")
 
 Return
 
