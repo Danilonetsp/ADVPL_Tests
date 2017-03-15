@@ -18,7 +18,7 @@ cAsterisco := cAsterisco + "*"
 
 Next
 
-cAsterisco := ""
+cAsterisco := "" 
 
 
 For nContL := Val(cQuant) to nContL2 Step -1
