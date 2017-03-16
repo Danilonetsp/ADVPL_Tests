@@ -2,25 +2,23 @@
 
 User function Desafio2
 
-Local nContL
-Local nContL2 := 1
-Local nContC
+Local nCont
+Local nCont2 := 1
 Local cQuant
-Local cAsterisco
+Local cAsterisco := "*"
 
-cAsterisco := "*"
 cQuant := PegaDado("Informe a quantidade de asteriscos:")
 
-For nContL := 1 to Val(cQuant) Step 1
+For nCont := 1 to Val(cQuant) Step 1
     ConOut(cAsterisco)
     cAsterisco := cAsterisco + "*"
 Next
 
-For nContL := Val(cQuant)-1 to nContL2 Step -1
-    ConOut(Replicate ("*",nContL))
+For nCont := Val(cQuant)-1 to 1 Step -1
+    ConOut(Replicate ("*",nCont))
 Next
 
-Alert("Olhe o console!!!")
+Alert("Resultado no console")
 
 Return
 
