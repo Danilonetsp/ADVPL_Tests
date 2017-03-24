@@ -1,6 +1,6 @@
 #include "TOTVS.CH"
 
-User Function TButton() 
+User Function Desaf6b() 
 
 DEFINE DIALOG oDlg TITLE "Desafio 6" FROM 180,180 TO 550,700 PIXEL    
 
@@ -25,8 +25,8 @@ oSay:lWordWrap = .F.
 
 //BOTOES INICIO
 // Usando o New   
-oTButton1 := TButton():New( 040, 004, "OK",oDlg,{||alert("Clicou OK")}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )   
-oTButton2 := TButton():New( 040, 047, "Cancelar",oDlg,{||alert("Clicou Cancelar")}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )
+oTButton1 := TButton():New( 040, 004, "OK",oDlg,{||Alert("Nome: " + cGet1 + Chr(13) + Chr(10) + "Idade: " + cGet2)}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )   
+oTButton2 := TButton():New( 040, 047, "Cancelar",oDlg,{||oDlg:End()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )
 //BOTOES FIM
 
 
@@ -36,8 +36,10 @@ cGet2 := "Digite a idade..." // Variavel do tipo caracter
 lHasButton := .T.
    
 oGet1 := TGet():New( 001, 030, { | u | If( PCount() == 0, cGet1, cGet1 := u ) },oDlg, 060, 010, "!@",, 0, 16777215,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F. ,,"cGet1",,,,lHasButton  )
+oGet1:bSetGet   := {|u| if( PCount() > 0, cGet1 := u, cGet1 ) }        
 
 oGet2 := TGet():New( 015, 030, { | u | If( PCount() == 0, cGet2, cGet2 := u ) },oDlg, 060, 010, "!@",, 0, 16777215,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F. ,,"cGet2",,,,lHasButton  )
+oGet2:bSetGet   := {|u| if( PCount() > 0, cGet2 := u, cGet2 ) }  
 //TEXTBOX FIM
 
 
