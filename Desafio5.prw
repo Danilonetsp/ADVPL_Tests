@@ -24,12 +24,9 @@ While nCont <= 10
     Endif
 
     nCont ++
-
 Enddo
 
-Alert("Numeros pares: " + nPar)
-Alert("Numeros impares: " + nImpar)
-
+Alert("Numeros pares: " + nPar + Chr(13) + Chr(10) + "Numeros impares: " + nImpar)
 
 Static Function ParOuImpar(nNum)
     If Mod(nNum,2) == 0
@@ -38,7 +35,4 @@ Static Function ParOuImpar(nNum)
         Return 1
     Endif
 
-
 Return
-
-
