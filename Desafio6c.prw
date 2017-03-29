@@ -2,11 +2,9 @@
 
 User Function Desaf6c() 
 
-aDados := {}
-aItem := {}
+Local aDados := {}
 
-DEFINE DIALOG oDlg TITLE "Desafio 6" FROM 180,180 TO 550,700 PIXEL    
-
+DEFINE DIALOG oDlg TITLE "Desafio 6" FROM 180,180 TO 330,380 PIXEL    
 
 //LABELS INICIO
 oFont := TFont():New("Verdana",,-12,.T.)
@@ -28,9 +26,10 @@ oSay:lWordWrap = .F.
 
 //BOTOES INICIO
 // Usando o New   
-oTButton1 := TButton():New( 040, 004, "OK",oDlg,{||AADD(aItem,cGet1)}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )   
+oTButton1 := TButton():New( 040, 004, "OK",oDlg,{||AdicionaDados(cGet1,cGet2,@aDados)}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )   
 oTButton2 := TButton():New( 040, 047, "Cancelar",oDlg,{||oDlg:End()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-oTButton3 := TButton():New( 055, 024, "Exibir Dados",oDlg,{||Alert(aItem[1])}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )
+oTButton3 := TButton():New( 055, 024, "Exibir Dados",oDlg,{||ListaDados(@aDados)}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )
+//oTButton3 := TButton():New( 055, 024, "Exibir Dados",oDlg,{||Alert(aDados[1,1] + aDados[1,2] + aDados[2,1] + aDados[2,2])}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. )
 //BOTOES FIM
 
 
@@ -46,7 +45,32 @@ oGet2 := TGet():New( 015, 030, { | u | If( PCount() == 0, cGet2, cGet2 := u ) },
 oGet2:bSetGet   := {|u| if( PCount() > 0, cGet2 := u, cGet2 ) }  
 //TEXTBOX FIM
 
-
 ACTIVATE DIALOG oDlg CENTERED
 
 Return
+
+
+Static Function AdicionaDados(Vlr1,Vlr2,Dados)
+Local aItem := {}
+
+    If Vlr1 <> "          " .AND. Vlr1 <> "Digite o nome..."
+        AADD(aItem,AllTrim(Vlr1))
+        AADD(aItem,AllTrim(Vlr2))
+        AADD(Dados,aItem)
+        cGet1 := "          "
+        cGet2 := "  "
+    Else
+        Alert("O NOME deve ser preenchido...")
+    Endif
+//Alert("Nome: " + Dados[LEN(Dados),1] + ", " + "Idade: " + Dados[LEN(Dados),2])
+Return
+
+
+Static Function ListaDados(Dados)
+nCont := 1
+cLista := ""
+    While nCont <= LEN(Dados)
+        cLista := cLista + "Nome: " + Dados[nCont,1] + " / " + "Idade: " + Dados[nCont,2] + Chr(13) + Chr(10)
+        nCont++
+    Enddo
+Alert(cLista)
